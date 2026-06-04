@@ -1,0 +1,15 @@
+[Unit]
+Description=Discord Email Agent
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/opt/email-agent
+Environment="PATH=/opt/email-agent/venv/bin"
+ExecStart=/opt/email-agent/venv/bin/python bot.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
