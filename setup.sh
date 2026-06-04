@@ -49,10 +49,13 @@ fi
 # Setup systemd service
 if [ -f email-agent.service ]; then
     echo "Setting up systemd service..."
+    # Dynamically set the correct user/group for this machine
+    sed -i "s/User=.*/User=$USER/" email-agent.service
+    sed -i "s/Group=.*/Group=$USER/" email-agent.service
     sudo cp email-agent.service /etc/systemd/system/
     sudo systemctl daemon-reload
     sudo systemctl enable email-agent.service
-    echo "Systemd service registered."
+    echo "Systemd service registered for user: $USER"
 else
     echo "email-agent.service not found. Skipping systemd setup."
 fi

@@ -3,8 +3,8 @@ Description=Discord Email Agent
 After=network.target
 
 [Service]
-User=ubuntu
-Group=ubuntu
+User=adarsh
+Group=adarsh
 WorkingDirectory=/opt/email-agent
 Environment="PATH=/opt/email-agent/venv/bin"
 ExecStart=/opt/email-agent/venv/bin/python bot.py
